@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind utilities;
+@tailwind components;
+
+* {
+  @apply disabled:bg-slate-400 disabled:cursor-not-allowed disabled:text-white box-border m-0;
+}
+
+h1 {
+  @apply text-6xl;
+}
+
+h2 {
+  @apply text-5xl;
+}
+
+h3 {
+  @apply text-3xl;
+}
+
+h4 {
+  @apply text-2xl;
+}
+
+h5 {
+  @apply text-xl;
+}
+
+h6 {
+  @apply text-lg;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-bold;
+}
+
+button {
+  @apply bg-slate-600 rounded-md w-20 h-10 p-2 min-w-fit text-white;
+}
+
+i {
+  @apply m-1;
+}
+
+input,
+select,
+textarea {
+  @apply px-2 py-1 rounded-md border border-black;
+}
+
+.bg-1{
+    background: url("./Assets/bg/rick-morty-opaque-walking.jpg") no-repeat center/cover;
+}
+
+.hyperlink{
+  @apply italic text-blue-700 hover:text-blue-400 hover:cursor-pointer hover:underline
+}
+
+.modal {
+  @apply fixed inset-y-0 inset-x-0 bg-gray-900 bg-opacity-50 flex flex-col justify-center items-center;
+  .card {
+    @apply rounded-2xl p-10 border border-gray-50 shadow-lg bg-white flex justify-center flex-col;
+    input,
+    select,
+    textarea {
+      @apply border border-black block;
+    }
+  }
+}
+
+.no-number-spin{
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  input[type=number] {
+    -moz-appearance: textfield;
+  }
+}
