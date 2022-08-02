@@ -1,18 +1,27 @@
-import React from 'react';
-import { Parallax, ParallaxLayer } from '@react-spring/parallax'
+import { useRef } from "react";
+import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 
-import {Home} from './Components/Home/Home';
+import { Landing } from "./Components/Landing/Landing";
+import { CharactersHub } from "./Components/CharactersHub/CharactersHub";
+
+
 
 function App() {
+ 
+  
+  const parallaxRef = useRef<any>(null);
 
   return (
-    <Parallax pages={2}>
-      <ParallaxLayer offset={0} speed={1}>
-        <Home />
+    <Parallax ref={parallaxRef} pages={2}>
+
+      <ParallaxLayer offset={0} speed={0.1}>
+        <Landing parallaxRef={parallaxRef} />
       </ParallaxLayer>
-      <ParallaxLayer offset={1} speed={1}>
-        
+
+      <ParallaxLayer offset={1} speed={0}>
+        <CharactersHub />
       </ParallaxLayer>
+
     </Parallax>
   );
 }
