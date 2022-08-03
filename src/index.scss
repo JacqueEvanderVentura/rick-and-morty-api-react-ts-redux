@@ -10,7 +10,7 @@
 }
 
 body{
-   @apply bg-[#262c3a] 
+   @apply bg-[#262c3a];
 }
 
 h1 {
@@ -50,15 +50,6 @@ button {
   @apply bg-slate-600 rounded-md w-10 h-10 p-2 min-w-fit text-white;
 }
 
-i {
-  @apply m-1;
-}
-
-input,
-select,
-textarea {
-  @apply px-2 py-1 rounded-md border border-black;
-}
 
 th, td{ @apply w-2/4 text-center}
 
@@ -68,12 +59,6 @@ th, td{ @apply w-2/4 text-center}
 .bg-2{
   background: url("./Assets/bg/rick-blue-bg.png") no-repeat center/cover;
 }
-
-.bg-1-blurred{
-  background: url("./Assets/bg/rick-morty-opaque-walking.jpg") no-repeat center/cover;
-  filter: blur(8px);
-}
-
 
 .hyperlink{
   @apply italic text-blue-700 hover:text-blue-400 hover:cursor-pointer hover:underline
@@ -91,37 +76,23 @@ th, td{ @apply w-2/4 text-center}
   }
 }
 
-.no-number-spin{
-  &::-webkit-outer-spin-button,
-  &::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-
-  /* Firefox */
-  input[type=number] {
-    -moz-appearance: textfield;
-  }
-}
 
 .custom-scrollbar-div{
-
   /* width */
   ::-webkit-scrollbar {
     @apply w-3
   }
 
-/* Track */
+/* track */
 ::-webkit-scrollbar-track {
   @apply shadow-inner shadow-slate-700 rounded-xl;
 }
 
-/* Handle */
+/* handle */
 ::-webkit-scrollbar-thumb {
-  @apply bg-cyan-300 rounded-xl;
+  @apply bg-[#b5edfc] rounded-xl;
   &:hover{
     @apply bg-cyan-500
   }
 }
-
 }

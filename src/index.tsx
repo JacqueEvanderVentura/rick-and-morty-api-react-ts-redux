@@ -1,8 +1,8 @@
 import ReactDOM from 'react-dom/client';
 import App from './App';
 
-import { rootStore } from './Logic/rootStore';
 import { Provider } from 'react-redux';
+import { rootStore } from './Logic/rootStore';
 
 import './index.scss';
 import { library } from "@fortawesome/fontawesome-svg-core";
