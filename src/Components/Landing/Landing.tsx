@@ -6,10 +6,9 @@ export const Landing = ({ parallaxRef }: any) => {
   return (
     <React.Fragment>
       <FontAwesomeIcon
-        className="absolute z-0 top-2/4 left-2/4 text-white fa-6x fa-spin-pulse"
+        className="absolute z-0 top-1/3 left-1/3 text-white fa-6x fa-spin-pulse"
         icon={faSpinner}
       />
-
       <div className="bg-1 bg-stone-300 flex flex-col justify-center items-start w-screen h-screen z-20 relative">
         <img
           src={require("../../Assets/imgs/rick-and-morty-logo.png")}
@@ -22,6 +21,7 @@ export const Landing = ({ parallaxRef }: any) => {
           icon={faChevronDown}
         />
       </div>
+
     </React.Fragment>
   );
 };

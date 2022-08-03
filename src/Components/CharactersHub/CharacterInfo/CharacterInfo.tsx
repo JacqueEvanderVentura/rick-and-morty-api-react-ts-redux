@@ -1,6 +1,7 @@
 import { faSpinner, faX } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
+import { trackPromise } from 'react-promise-tracker';
 
 export const CharacterInfo = ({ character, characterId, setShowingModal }: any) => {
 
@@ -8,17 +9,17 @@ export const CharacterInfo = ({ character, characterId, setShowingModal }: any) 
 
     useEffect(()=>{
       if(characterId){
-        fetch(`https://rickandmortyapi.com/api/character/${characterId}`)
-        .then((response) => response.json())
-        .then((data) => setSelectedCharacter(data))
-      }
+        trackPromise(
+          fetch(`https://rickandmortyapi.com/api/character/${characterId}`)
+          .then((response) => response.json())
+          .then((data) => setSelectedCharacter(data))
+        )}
     }
     ,[characterId])
 
-    console.log(selectedCharacter)
   return (
     <div className="modal">
-      <div className="card w-2/4 min-w-fit text-black">
+      <div className="card w-2/4 min-w-fit text-black ">
 
         <button
           aria-label="Cerrar"

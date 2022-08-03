@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { actionsCharacterListPaginated } from "../../../Logic/Characters/CharacterListPaginated/actionsCharacterListPaginated";
 import { rootStore } from "../../../Logic/rootStore";
 import { CharacterInfo } from "../CharacterInfo/CharacterInfo";
+import { trackPromise } from 'react-promise-tracker';
+import { Loading } from "../../Loading/Loading";
 
 
 export const CharacterListPaginated = ({ page }: any) => {
@@ -12,13 +14,16 @@ export const CharacterListPaginated = ({ page }: any) => {
 
   const dispatch = useDispatch();
   const handleLoadCharacters = () => {
-    fetch(`https://rickandmortyapi.com/api/character?page=${page}`)
+    trackPromise(
+
+      fetch(`https://rickandmortyapi.com/api/character?page=${page}`)
       .then((response) => response.json())
       .then((data) =>
-        dispatch({
-          type: actionsCharacterListPaginated.RELOAD_LIST,
-          payload: { charactersPaginated: data.results },
-        })
+      dispatch({
+        type: actionsCharacterListPaginated.RELOAD_LIST,
+        payload: { charactersPaginated: data.results },
+      })
+      )
       );
   };
 
@@ -32,9 +37,10 @@ export const CharacterListPaginated = ({ page }: any) => {
   }
   return (
     <div className="flex justify-center ">
+      <Loading/>
       <table className="table-fixed w-full text-center">
           <thead>
-            <tr className="text-xl bg-[#0002] whitespace-nowrap">
+            <tr className="text-xl bg-[#000] sticky top-0 whitespace-nowrap">
               <th>Full name</th>
               <th>First appearance</th>
             </tr>

@@ -2,10 +2,12 @@ import {
   faChevronLeft,
   faChevronRight,
   faMagnifyingGlass,
+  faSpinner,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRef, useState } from "react";
 import { useSelector } from "react-redux";
+import { Loading } from "../Loading/Loading";
 import { CharacterInfo } from "./CharacterInfo/CharacterInfo";
 import { CharacterListPaginated } from "./CharacterList/CharacterList";
 
@@ -36,17 +38,21 @@ export const CharactersHub = () => {
   const refCharacter = useRef() as any;
 
   function handleModal(character: any) {
-    setSelectedIdCharacter(character);
+    const formattedCharacter = character.replace(/\D/g, '');
+    if(!formattedCharacter || formattedCharacter > 826 ){
+        return refCharacter.current.value = ''
+    }
+    setSelectedIdCharacter(formattedCharacter);
     setShowingModalCharacterInfo(true);
-    refCharacter.current.value = ''
+   return refCharacter.current.value = ''
   }
 
   return (
     <div className="flex items-center justify-center bg-[#262c3a] bg-2 text-white w-screen h-screen custom-scrollbar-div  ">
-      <div className="flex flex-col bg-[#0009] w-screen sm:w-4/6 h-5/6 p-3 rounded-lg overflow-x-auto space-y-7 ">
+      <div className="flex flex-col bg-[#0009] w-screen sm:w-4/6 h-5/6 p-3 rounded-lg overflow-x-auto space-y-7 pt-0 ">
         <div className="sticky top-0">
-          <div className="flex justify-center text-black">
-            <input ref={refCharacter} className="w-56 px-2 placeholder:italic placeholder:text-center placeholder:pl-6 outline-none" list="allCharactersDataList" placeholder="-- Select character id --"/>
+          <div className="flex justify-center text-black mt-1  space-x-1">
+            <input ref={refCharacter} onKeyDown={(e:any)=> e.keyCode === 13 && handleModal(refCharacter.current.value)} className="w-56 px-2 rounded-md placeholder:italic placeholder:text-center placeholder:pl-6 outline-none" list="allCharactersDataList" placeholder="-- Select character id --"/>
             <datalist id='allCharactersDataList' >
               {allCharacters.map((character:any, index:number)=>
                 <option key={index} value={character.id}>{character.name}</option>
