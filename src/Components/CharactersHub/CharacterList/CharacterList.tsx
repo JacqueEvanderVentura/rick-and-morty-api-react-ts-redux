@@ -4,8 +4,9 @@ import { actionsCharacterList } from "../../../Logic/Characters/CharacterList/ac
 import { CharacterInfo } from "../CharacterInfo/CharacterInfo";
 
 export const CharacterList = ({ page }: any) => {
-  const [showingModalCharacterInfo, setShowingModalCharacterInfo] = useState(false)
-  const [selectedCharacter, setSelectedCharacter] = useState('Rick Sanchez')
+  const [showingModalCharacterInfo, setShowingModalCharacterInfo] =
+    useState(false);
+  const [selectedCharacter, setSelectedCharacter] = useState("Rick Sanchez");
 
   const dispatch = useDispatch();
   const handleLoadCharacters = () => {
@@ -22,32 +23,41 @@ export const CharacterList = ({ page }: any) => {
 
   const characters = useSelector((state: any) => state.characters);
 
-  function handleModal(character:any){
-    setShowingModalCharacterInfo(true)
-    setSelectedCharacter(character)
-
+  function handleModal(character: any) {
+    setShowingModalCharacterInfo(true);
+    setSelectedCharacter(character);
   }
   return (
-      <React.Fragment>
-        <table>
-        <thead>
-          <tr className="text-xl bg-[#0002]">
-            <th>Full name</th>
-            <th>First appearance</th>
-          </tr>
-        </thead>
-        <tbody>
-          {characters.map((character: any, index: number) => (
-            <tr key={index}>
-              <td><span className="cursor-pointer hyperlink" onClick={()=>handleModal(character)}>{character.name}</span></td>
-              <td>
-                Episode {character.episode && character.episode[0].replace(/\D/g, "")}
-              </td>
+    <div className="flex justify-center ">
+      <table className="table-fixed w-full text-center">
+          <thead>
+            <tr className="text-xl bg-[#0002] whitespace-nowrap">
+              <th>Full name</th>
+              <th>First appearance</th>
             </tr>
-          ))}
-        </tbody>
+          </thead>
+          
+          <tbody>
+            {characters.map((character: any, index: number) => (
+              <tr key={index}>
+                <td>
+                  <span className="cursor-pointer hyperlink" onClick={() => handleModal(character)}>
+                    {character.name}
+                  </span>
+                </td>
+                <td>
+                  Episode {character.episode && character.episode[0].replace(/\D/g, "")}
+                </td>
+              </tr>
+            ))}
+          </tbody>
       </table>
-          {showingModalCharacterInfo && <CharacterInfo setShowingModal={setShowingModalCharacterInfo} character={selectedCharacter}/>}
-      </React.Fragment>
+      {showingModalCharacterInfo && (
+        <CharacterInfo
+          setShowingModal={setShowingModalCharacterInfo}
+          character={selectedCharacter}
+        />
+      )}
+    </div>
   );
 };

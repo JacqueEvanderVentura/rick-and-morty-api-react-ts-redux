@@ -18,10 +18,10 @@ export const CharacterInfo = ({ character, setShowingModal }: any) => {
         <h3>{character.name}</h3>
         <hr />
 
-        <div className="flex flex-row justify-between space-x-1">
+        <div className="flex flex-col md:flex-row justify-between space-x-1">
           <div>
             <div className="align-top">
-              <span>Status:</span>
+              <span>Status: </span>
               {character.status === "Alive"
                 ? "Alive 👍🏼"
                 : character.status === "Dead"
@@ -30,16 +30,16 @@ export const CharacterInfo = ({ character, setShowingModal }: any) => {
             </div>
 
             <div>
-              <span>Species:</span> {character.species}
+              <span>Species: </span> {character.species}
             </div>
 
             <div>
-              <span>Gender:</span>
+              <span>Gender: </span>
               {character.gender === "Male" ? "Male 👨‍🦱" : "Female 👩"}
             </div>
 
             <div>
-              <span>First appearance:</span>
+              <span>First appearance: </span>
               <a
                 href={character.episode[0]}
                 target="_blank"
@@ -51,7 +51,7 @@ export const CharacterInfo = ({ character, setShowingModal }: any) => {
             </div>
 
             <div>
-              <span>Last appearance:</span>
+              <span>Last appearance: </span>
               <a
                 href={character.episode[character.episode.length - 1]}
                 target="_blank"
@@ -62,7 +62,7 @@ export const CharacterInfo = ({ character, setShowingModal }: any) => {
               </a>
             </div>
             <div>
-              <span>Last known location:</span>
+              <span>Last known location: </span>
               <a
                 href={character.location.url}
                 target="_blank"

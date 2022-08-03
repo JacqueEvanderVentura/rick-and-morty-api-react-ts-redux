@@ -51,13 +51,15 @@ button {
 }
 
 
-th, td{ @apply w-2/4 text-center}
+th, td{ @apply w-2/4 p-2 m-7 }
+
+span{ @apply font-bold}
 
 .bg-1{
     background: url("./Assets/bg/rick-morty-opaque-walking.jpg") no-repeat center/cover;
   }
 .bg-2{
-  background: url("./Assets/bg/rick-blue-bg.png") no-repeat center/cover;
+  background: url("./Assets/bg/rick-on-bottom-right-blue-bg.png") no-repeat center/cover;
 }
 
 .hyperlink{

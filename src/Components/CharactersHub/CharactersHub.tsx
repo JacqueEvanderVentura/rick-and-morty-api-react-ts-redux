@@ -27,7 +27,7 @@ export const CharactersHub = () => {
 
   return (
     <div className="flex items-center justify-center bg-[#262c3a] bg-2 text-white w-screen h-screen custom-scrollbar-div  ">
-      <div className="flex flex-col bg-[#0009] w-screen sm:w-3/4 h-5/6  min-w-fit min-h-fit p-3 rounded-lg overflow-x-auto space-y-7 ">
+      <div className="flex flex-col bg-[#0009] w-screen sm:w-4/6 h-5/6 p-3 rounded-lg overflow-x-auto space-y-7 ">
         <div className="sticky top-0">
           <div className="flex flex-row justify-between items-center">
             <div className="space-x-2 ">
@@ -60,7 +60,7 @@ export const CharactersHub = () => {
             </div>
           </div>
         </div>
-        <div className="relative">
+        <div className="  ">
           <CharacterList page={page} />
         </div>
       </div>
