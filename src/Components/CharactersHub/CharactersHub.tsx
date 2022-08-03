@@ -35,15 +35,15 @@ export const CharactersHub = () => {
  
 
   return (
-    <div className="flex items-center justify-center bg-stone-300 w-screen h-screen ">
-      <div className="flex flex-col bg-[#8888] w-3/4 h-5/6 min-w-fit min-h-fit p-3 rounded-lg">
+    <div className="flex items-center justify-center bg-[#262c3a] bg-2 text-white w-screen h-screen custom-scrollbar-div  ">
+      <div className="flex flex-col bg-[#0009] w-3/4 h-5/6  min-w-fit min-h-fit p-3 rounded-lg overflow-x-auto ">
 
         <div className="flex flex-row justify-between items-center">
           <div className="space-x-2">
             <button title="5 steps to previous page" onClick={handlePreviousPage5Jump}><FontAwesomeIcon icon={faChevronLeft}/><FontAwesomeIcon icon={faChevronLeft}/></button>
             <button title="1 step to previous page" onClick={handlePreviousPage1Jump}><FontAwesomeIcon icon={faChevronLeft}/></button>
           </div>
-            {page}
+           <h3>{page}</h3>
           <div className="space-x-2">
             <button title="1 step to next page" onClick={handleNextPage1Jump}><FontAwesomeIcon icon={faChevronRight}/></button>
             <button title="5 steps to next page" onClick={handleNextPage5Jump}><FontAwesomeIcon icon={faChevronRight}/><FontAwesomeIcon icon={faChevronRight}/></button>

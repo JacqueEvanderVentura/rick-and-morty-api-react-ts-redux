@@ -9,7 +9,6 @@ export const CharacterList = ({page}:any) => {
         fetch(`https://rickandmortyapi.com/api/character?page=${page}`)
         .then(response=> response.json())
         .then(data=>dispatch({type: actionsCharacterList.RELOAD_LIST, payload:{characters:data.results}}))
-        // .then(data=>console.log(data.results))
 }
   useEffect(()=>handleLoadCharacters(),[page])
 
@@ -18,7 +17,7 @@ export const CharacterList = ({page}:any) => {
   return (
     <table>
       <thead>
-        <tr>
+        <tr className="text-xl">
           <th>Full name</th>
           <th>First appearance</th>
         </tr>

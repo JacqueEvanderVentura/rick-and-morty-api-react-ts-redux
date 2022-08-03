@@ -2,12 +2,15 @@
 @tailwind utilities;
 @tailwind components;
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
 * {
   @apply disabled:bg-slate-400 disabled:cursor-not-allowed disabled:text-white box-border m-0;
+  font-family: Roboto, sans-serif
 }
 
 body{
-   @apply bg-stone-300 
+   @apply bg-[#262c3a] 
 }
 
 h1 {
@@ -57,11 +60,20 @@ textarea {
   @apply px-2 py-1 rounded-md border border-black;
 }
 
-th{ @apply sticky border border-black}
+th, td{ @apply w-2/4 text-center}
 
 .bg-1{
     background: url("./Assets/bg/rick-morty-opaque-walking.jpg") no-repeat center/cover;
+  }
+.bg-2{
+  background: url("./Assets/bg/rick-blue-bg.png") no-repeat center/cover;
 }
+
+.bg-1-blurred{
+  background: url("./Assets/bg/rick-morty-opaque-walking.jpg") no-repeat center/cover;
+  filter: blur(8px);
+}
+
 
 .hyperlink{
   @apply italic text-blue-700 hover:text-blue-400 hover:cursor-pointer hover:underline
@@ -90,4 +102,26 @@ th{ @apply sticky border border-black}
   input[type=number] {
     -moz-appearance: textfield;
   }
+}
+
+.custom-scrollbar-div{
+
+  /* width */
+  ::-webkit-scrollbar {
+    @apply w-3
+  }
+
+/* Track */
+::-webkit-scrollbar-track {
+  @apply shadow-inner shadow-slate-700 rounded-xl;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  @apply bg-cyan-300 rounded-xl;
+  &:hover{
+    @apply bg-cyan-500
+  }
+}
+
 }
