@@ -1,9 +1,11 @@
-import React, { createContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { actionsCharacterList } from "../../../Logic/Characters/CharacterList/actionsCharacterList";
+import { actionsCharacterListPaginated } from "../../../Logic/Characters/CharacterListPaginated/actionsCharacterListPaginated";
+import { rootStore } from "../../../Logic/rootStore";
 import { CharacterInfo } from "../CharacterInfo/CharacterInfo";
 
-export const CharacterList = ({ page }: any) => {
+
+export const CharacterListPaginated = ({ page }: any) => {
   const [showingModalCharacterInfo, setShowingModalCharacterInfo] =
     useState(false);
   const [selectedCharacter, setSelectedCharacter] = useState("Rick Sanchez");
@@ -14,14 +16,15 @@ export const CharacterList = ({ page }: any) => {
       .then((response) => response.json())
       .then((data) =>
         dispatch({
-          type: actionsCharacterList.RELOAD_LIST,
-          payload: { characters: data.results },
+          type: actionsCharacterListPaginated.RELOAD_LIST,
+          payload: { charactersPaginated: data.results },
         })
       );
   };
+
   useEffect(() => handleLoadCharacters(), [page]);
 
-  const characters = useSelector((state: any) => state.characters);
+  const characters = useSelector((state: any) => state.paginatedCharacters);
 
   function handleModal(character: any) {
     setShowingModalCharacterInfo(true);

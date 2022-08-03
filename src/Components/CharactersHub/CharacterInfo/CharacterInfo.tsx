@@ -1,8 +1,21 @@
 import { faSpinner, faX } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import { useEffect, useState } from "react";
 
-export const CharacterInfo = ({ character, setShowingModal }: any) => {
+export const CharacterInfo = ({ character, characterId, setShowingModal }: any) => {
+
+  const [selectedCharacter, setSelectedCharacter] = useState(character);
+
+    useEffect(()=>{
+      if(characterId){
+        fetch(`https://rickandmortyapi.com/api/character/${characterId}`)
+        .then((response) => response.json())
+        .then((data) => setSelectedCharacter(data))
+      }
+    }
+    ,[characterId])
+
+    console.log(selectedCharacter)
   return (
     <div className="modal">
       <div className="card w-2/4 min-w-fit text-black">
@@ -14,62 +27,61 @@ export const CharacterInfo = ({ character, setShowingModal }: any) => {
 
           <FontAwesomeIcon icon={faX} />
         </button>
-
-        <h3>{character.name}</h3>
+        <h3>{selectedCharacter?.name}</h3>
         <hr />
 
         <div className="flex flex-col md:flex-row justify-between space-x-1">
           <div>
             <div className="align-top">
               <span>Status: </span>
-              {character.status === "Alive"
+              {selectedCharacter?.status === "Alive"
                 ? "Alive 👍🏼"
-                : character.status === "Dead"
+                : selectedCharacter?.status === "Dead"
                 ? "Dead 💀"
                 : "Unknown ❔"}
             </div>
 
             <div>
-              <span>Species: </span> {character.species}
+              <span>Species: </span> {selectedCharacter?.species}
             </div>
 
             <div>
               <span>Gender: </span>
-              {character.gender === "Male" ? "Male 👨‍🦱" : "Female 👩"}
+              {selectedCharacter?.gender === "Male" ? "Male 👨‍🦱" : "Female 👩"}
             </div>
 
             <div>
               <span>First appearance: </span>
               <a
-                href={character.episode[0]}
+                href={selectedCharacter?.episode[0]}
                 target="_blank"
                 rel="noreferrer"
                 className="hyperlink"
               >
-                Episode {character.episode[0].replace(/\D/g, "")}
+                Episode {selectedCharacter?.episode[0].replace(/\D/g, "")}
               </a>
             </div>
 
             <div>
               <span>Last appearance: </span>
               <a
-                href={character.episode[character.episode.length - 1]}
+                href={selectedCharacter?.episode[selectedCharacter?.episode.length - 1]}
                 target="_blank"
                 rel="noreferrer"
                 className="hyperlink"
               >
-                Episode {character.episode[character.episode.length - 1].replace(/\D/g,"")}
+                Episode {selectedCharacter?.episode[selectedCharacter?.episode.length - 1].replace(/\D/g,"")}
               </a>
             </div>
             <div>
               <span>Last known location: </span>
               <a
-                href={character.location.url}
+                href={selectedCharacter?.location.url}
                 target="_blank"
                 rel="noreferrer"
                 className="hyperlink"
               >
-                {character.location.name}
+                {selectedCharacter?.location.name}
               </a>
             </div>
           </div>
@@ -80,10 +92,10 @@ export const CharacterInfo = ({ character, setShowingModal }: any) => {
             />
             <img
               className="z-10 border-8 border-black"
-              src={character.image}
-              alt={character.name}
+              src={selectedCharacter?.image}
+              alt={selectedCharacter?.name}
             />
-          </div>
+          </div> 
         </div>
       </div>
     </div>
